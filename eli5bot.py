@@ -11,6 +11,9 @@ for comment in subreddit.stream.comments():
         if isinstance(parent, praw.models.Submission):
             continue
         parent_comment = comment.parent().body
+        print '\nbefore:'
+        print parent_comment
         transformed = smpl.simpli5(smpl.smmrize(parent_comment))
         #comment.reply(transformed)
-        print(transformed)
+        print '\nafter:'
+        print transformed
