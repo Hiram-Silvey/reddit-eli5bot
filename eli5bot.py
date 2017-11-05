@@ -3,7 +3,7 @@ import praw
 import re
 import time
 reddit = praw.Reddit('eli5bot')
-subreddit = reddit.subreddit("science")
+subreddit = reddit.subreddit("test")
 
 SIGNATURE = 'beep boop. I am the eli5bot. I attempt to translate things to simpler english and link relevant wiki articles.'
 
