@@ -8,7 +8,7 @@ subreddit = reddit.subreddit("science")
 SIGNATURE = 'beep boop. I am the eli5bot. I attempt to translate things to simpler english and link relevant wiki articles.'
 
 for comment in subreddit.stream.comments():
-    if re.search("eli5", comment.body, re.IGNORECASE):
+    if re.search("e", comment.body, re.IGNORECASE):
         parent = comment.parent()
         if isinstance(parent, praw.models.Submission):
             continue
@@ -18,14 +18,14 @@ for comment in subreddit.stream.comments():
         transformed = smpl.simpli5(smpl.smmrize(parent_comment))
 
         print '\nafter:'
-        print transformed
         result = '> ' + transformed + '\n*****\nI am eli5bot. I attempt to simplify text and provide relevant wiki links. Beep boop.'
-        try:
-            comment.reply(result)
-            break
+        print result
+        #try:
+        #    comment.reply(result)
+        #    break
 
-        except:
-            print "Need to wait for at least 10 minutes to make another comment"
-            time.sleep(600)
-            comment.reply(transformed)
+        #except:
+        #    print "Need to wait for at least 10 minutes to make another comment"
+        #    time.sleep(600)
+        #    comment.reply(transformed)
 
