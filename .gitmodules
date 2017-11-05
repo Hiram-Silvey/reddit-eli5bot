@@ -1,0 +1,3 @@
+[submodule "simpli5"]
+	path = simpli5
+	url = git@github.com:Hiram-Silvey/simpli5.git
