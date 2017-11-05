@@ -1,0 +1,5 @@
+docopt==0.6.2
+praw==5.2.0
+spacy==1.9.0
+stemming==1.0.1
+nltk==3.2.5
