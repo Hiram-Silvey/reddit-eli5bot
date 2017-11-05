@@ -1,6 +1,5 @@
 import simpli5.parser as smpl
 import praw
-import re
 import time
 reddit = praw.Reddit('eli5bot')
 subreddit = reddit.subreddit("test")
@@ -8,7 +7,7 @@ subreddit = reddit.subreddit("test")
 SIGNATURE = 'beep boop. I am the eli5bot. I attempt to translate things to simpler english and link relevant wiki articles.'
 
 for comment in subreddit.stream.comments():
-    if re.search("e", comment.body, re.IGNORECASE):
+    if 'eli5' in comment.body.lower():
         parent = comment.parent()
         if isinstance(parent, praw.models.Submission):
             continue
@@ -20,12 +19,9 @@ for comment in subreddit.stream.comments():
         print '\nafter:'
         result = '> ' + transformed + '\n*****\nI am eli5bot. I attempt to simplify text and provide relevant wiki links. Beep boop.'
         print result
-        #try:
-        #    comment.reply(result)
-        #    break
-
-        #except:
-        #    print "Need to wait for at least 10 minutes to make another comment"
-        #    time.sleep(600)
-        #    comment.reply(transformed)
-
+        try:
+            comment.reply(result)
+        except:
+            print "Need to wait for at least 10 minutes to make another comment"
+            time.sleep(600)
+            comment.reply(result)
